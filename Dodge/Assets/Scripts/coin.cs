@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CoinSpawner : MonoBehaviour
 {
@@ -6,13 +7,14 @@ public class CoinSpawner : MonoBehaviour
     public int numberOfCoins = 10;  // 생성할 동전의 개수
     public Vector3 spawnAreaMin;  // 생성 영역의 최소 좌표
     public Vector3 spawnAreaMax;  // 생성 영역의 최대 좌표
+    public float spawnInterval = 1.0f;  // 동전 생성 간격
 
     void Start()
     {
-        SpawnCoins();
+        StartCoroutine(SpawnCoins());
     }
 
-    void SpawnCoins()
+    IEnumerator SpawnCoins()
     {
         for (int i = 0; i < numberOfCoins; i++)
         {
@@ -23,6 +25,9 @@ public class CoinSpawner : MonoBehaviour
             );
 
             Instantiate(coinPrefab, randomPosition, Quaternion.identity);
+            
+            // spawnInterval 초 대기
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 }

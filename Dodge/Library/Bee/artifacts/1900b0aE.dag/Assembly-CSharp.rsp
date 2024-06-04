@@ -347,6 +347,7 @@
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/BulletSpawner.cs"
 "Assets/Scripts/coin.cs"
+"Assets/Scripts/ddaeat.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Rotator.cs"

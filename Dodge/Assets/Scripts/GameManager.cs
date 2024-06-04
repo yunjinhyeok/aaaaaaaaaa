@@ -8,14 +8,17 @@ public class GameManager : MonoBehaviour {
     public GameObject gameoverText; // 게임오버시 활성화 할 텍스트 게임 오브젝트
     public Text timeText; // 생존 시간을 표시할 텍스트 컴포넌트
     public Text recordText; // 최고 기록을 표시할 텍스트 컴포넌트
+    public Text coinText; // 동전 개수를 표시할 텍스트 컴포넌트 추가
 
     private float surviveTime; // 생존 시간
     private bool isGameover; // 게임 오버 상태
+    private int coinsCollected; // 동전 개수 추가
 
     void Start() {
         // 생존 시간과 게임 오버 상태를 초기화
         surviveTime = 0;
         isGameover = false;
+        coinsCollected = 0; // 동전 개수 초기화 추가
     }
 
     void Update() {
@@ -59,5 +62,15 @@ public class GameManager : MonoBehaviour {
 
         // 최고 기록을 recordText 텍스트 컴포넌트를 통해 표시
         recordText.text = "Best Time: " + (int) bestTime;
+    }
+
+    // 동전을 먹었을 때 호출될 메서드 추가
+    public void CollectCoin() {
+        if (!isGameover)
+        {
+            coinsCollected++;
+            // 코인 개수를 coinText 텍스트 컴포넌트를 통해 표시
+            coinText.text = "Coins: " + coinsCollected;
+        }
     }
 }
